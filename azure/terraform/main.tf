@@ -7,9 +7,9 @@ module "app" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name  = "teststoragerg"
-    storage_account_name = "andreitest"
-    container_name       = "tfstate"
-    key                  = "azuretf.env.tfstate"
+    resource_group_name  = var.state_resource_group_name
+    storage_account_name = var.state_storage_account_name
+    container_name       = var.state_container_name
+    key                  = "azuretf.${var.environment}.tfstate"
   }
 }
