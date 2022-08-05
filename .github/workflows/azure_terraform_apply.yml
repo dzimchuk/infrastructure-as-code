@@ -41,11 +41,11 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: terraform init -var-file="${{ env.TFVARS_FILE }}"
 
       - name: Terraform Validate
         id: validate
-        run: terraform validate -no-color
+        run: terraform validate -var-file="${{ env.TFVARS_FILE }}" -no-color
 
       - name: Terraform Plan
         id: plan
