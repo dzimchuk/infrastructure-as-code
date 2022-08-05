@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set .tfvars
-        run: echo "TFVARS_FILE=env_${{ inputs.print_tags }}.tfvars" >> $GITHUB_ENV
+        run: echo "TFVARS_FILE=env_${{ inputs.env }}.tfvars" >> $GITHUB_ENV
       
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
