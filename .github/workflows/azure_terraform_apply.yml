@@ -26,11 +26,11 @@ jobs:
         working-directory: ./azure/terraform
 
     steps:
+      - uses: actions/checkout@v2
+
       - name: Set .tfvars
         run: echo "TFVARS_FILE=env_${{ inputs.print_tags }}.tfvars" >> $GITHUB_ENV
       
-      - uses: actions/checkout@v2
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
