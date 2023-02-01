@@ -1,0 +1,56 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "environment": {
+            "value": "prod"
+        },
+        "appServicePlanInstanceCount": {
+            "value": 1
+        },
+        "appCustomHostname": {
+          "value": "prod"
+        },
+        "dnsZone": {
+          "value": "dzimchuk.com"
+        },
+        "sqlServerAdministratorLogin": {
+          "reference": {
+            "keyVault": {
+              "id": "/subscriptions/b11b1a33-f83f-4cf1-af6d-df29cb4de751/resourceGroups/TestKeyVault/providers/Microsoft.KeyVault/vaults/Dzimchuk-TestKeyVault"
+            },
+            "secretName": "TestApp-SqlAdminLogin-Prod"
+          }
+        },
+        "sqlServerAdministratorPassword": {
+          "reference": {
+            "keyVault": {
+              "id": "/subscriptions/b11b1a33-f83f-4cf1-af6d-df29cb4de751/resourceGroups/TestKeyVault/providers/Microsoft.KeyVault/vaults/Dzimchuk-TestKeyVault"
+            },
+            "secretName": "TestApp-SqlAdminPwd-Prod"
+          }
+        },
+        "sqlServerLogin": {
+          "reference": {
+            "keyVault": {
+              "id": "/subscriptions/b11b1a33-f83f-4cf1-af6d-df29cb4de751/resourceGroups/TestKeyVault/providers/Microsoft.KeyVault/vaults/Dzimchuk-TestKeyVault"
+            },
+            "secretName": "TestApp-SqlLogin-Prod"
+          }
+        },
+        "sqlServerPassword": {
+          "reference": {
+            "keyVault": {
+              "id": "/subscriptions/b11b1a33-f83f-4cf1-af6d-df29cb4de751/resourceGroups/TestKeyVault/providers/Microsoft.KeyVault/vaults/Dzimchuk-TestKeyVault"
+            },
+            "secretName": "TestApp-SqlPwd-Prod"
+          }
+        },
+        "sqlDatabaseSku": {
+            "value": {
+              "name": "GP_Gen5_2",
+              "tier": "GeneralPurpose"
+            }
+        }      
+    }
+}
