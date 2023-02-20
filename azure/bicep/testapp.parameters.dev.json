@@ -8,11 +8,12 @@
         "appServicePlanInstanceCount": {
             "value": 1
         },
-        "appCustomHostname": {
-          "value": "test2"
-        },
-        "dnsZone": {
-          "value": "dzimchuk.com"
+        "customDomainSettings": {
+          "value": {
+            "appCustomHostname": "test2",
+            "apiCustomHostname": "test2-api",
+            "dnsZone": "dzimchuk.com"
+          }
         },
         "sqlServerAdministratorLogin": {
           "reference": {
@@ -47,10 +48,10 @@
           }
         },
         "sqlDatabaseSku": {
-            "value": {
-              "name": "GP_Gen5_2",
-              "tier": "GeneralPurpose"
-            }
+          "value": {
+            "name": "S0",
+            "tier": "Standard"
+          }
         }      
     }
 }

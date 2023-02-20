@@ -51,7 +51,7 @@ resource apiConfig 'Microsoft.Web/sites/config@2022-03-01' = {
 }
 
 resource appServiceFrontend 'Microsoft.Web/sites@2022-03-01' = {
-  name: '${solutionName}-${environment}'
+  name: '${solutionName}-${environment}-app'
   location: location
   properties: {
     serverFarmId: appServicePlan.id

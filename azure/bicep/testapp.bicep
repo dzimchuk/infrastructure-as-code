@@ -30,9 +30,10 @@ param sqlServerPassword string
 @description('Name and tier of the SQL database SKU.')
 param sqlDatabaseSku object
 
-@description('Existing Azure DNS zone in target resource group')
-param dnsZone string
-param appCustomHostname string
+param configureCustomDomain bool = true
+
+@description('Custom domain name settings')
+param customDomainSettings object
 
 module appInsights 'modules/appInsights.bicep' = {
   name: '${solutionName}-appinsights-${environment}'
@@ -169,12 +170,23 @@ module keyVaultAccessPolicy 'modules/keyVaultAccessPolicy.bicep' = {
   }
 }
 
-module appCustomHostName 'modules/customDomain.bicep' = {
-  name: 'CustomHostname'
+module apiCustomHostName 'modules/customDomain.bicep' = if(configureCustomDomain) {
+  name: 'ApiCustomHostname'
   params: {
     appName: appService.outputs.appNames.api
-    dnsZone: dnsZone
-    appCustomHostname: appCustomHostname
+    dnsZone: customDomainSettings.dnsZone
+    appCustomHostname: customDomainSettings.apiCustomHostname
+    location: location
+    hostingPlanId: appService.outputs.hostingPlan.id
+  }
+}
+
+module appCustomHostName 'modules/customDomain.bicep' = if(configureCustomDomain) {
+  name: 'AppCustomHostname'
+  params: {
+    appName: appService.outputs.appNames.app
+    dnsZone: customDomainSettings.dnsZone
+    appCustomHostname: customDomainSettings.appCustomHostname
     location: location
     hostingPlanId: appService.outputs.hostingPlan.id
   }

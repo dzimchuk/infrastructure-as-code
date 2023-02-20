@@ -8,11 +8,12 @@
         "appServicePlanInstanceCount": {
             "value": 1
         },
-        "appCustomHostname": {
-          "value": "prod"
-        },
-        "dnsZone": {
-          "value": "dzimchuk.com"
+        "customDomainSettings": {
+          "value": {
+            "appCustomHostname": "prod",
+            "apiCustomHostname": "prod-api",
+            "dnsZone": "dzimchuk.com"
+          }
         },
         "sqlServerAdministratorLogin": {
           "reference": {
