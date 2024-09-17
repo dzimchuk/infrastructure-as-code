@@ -126,7 +126,7 @@ var urlPrefix = 'https://${keyVault.outputs.keyVaultName}${az.environment().suff
 //     userAssignedIdentityId: secretAccessIdentity.id
 //     secrets: [
 //       {
-//         name: 'appInsights-conn-string'
+//         name: 'app-insights-conn-string'
 //         value: appInsights.outputs.appInsights.properties.ConnectionString
 //       }
 //       {
@@ -138,7 +138,7 @@ var urlPrefix = 'https://${keyVault.outputs.keyVaultName}${az.environment().suff
 //     env: [
 //       {
 //         name: 'ApplicationInsights__ConnectionString'
-//         secretRef: 'appInsights-conn-string'
+//         secretRef: 'app-insights-conn-string'
 //       }
 //       {
 //         name: 'ConnectionStrings__Storage'

@@ -11,7 +11,7 @@ param storageAccountSku string
 
 param virtualNetworkSubnetId string
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   name: storageAccountName
   location: location
   sku: {
@@ -53,7 +53,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   }
 }
 
-resource blobServices 'Microsoft.Storage/storageAccounts/blobServices@2023-01-01' = {
+resource blobServices 'Microsoft.Storage/storageAccounts/blobServices@2023-05-01' = {
   parent: storageAccount
   name: 'default'
   properties:{
@@ -77,7 +77,7 @@ resource blobServices 'Microsoft.Storage/storageAccounts/blobServices@2023-01-01
   }
 }
 
-resource containers 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-01-01' = [for containerName in containerNames: {
+resource containers 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-05-01' = [for containerName in containerNames: {
   parent: blobServices
   name: containerName
   properties: {
@@ -88,17 +88,17 @@ resource containers 'Microsoft.Storage/storageAccounts/blobServices/containers@2
   }
 }]
 
-resource queueServices 'Microsoft.Storage/storageAccounts/queueServices@2023-01-01' = {
+resource queueServices 'Microsoft.Storage/storageAccounts/queueServices@2023-05-01' = {
   parent: storageAccount
   name: 'default'
 }
 
-resource queues 'Microsoft.Storage/storageAccounts/queueServices/queues@2023-01-01' = [for queueName in queueNames: {
+resource queues 'Microsoft.Storage/storageAccounts/queueServices/queues@2023-05-01' = [for queueName in queueNames: {
   parent: queueServices
   name: queueName
 }]
 
-resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2023-01-01' = {
+resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2023-05-01' = {
   parent: storageAccount
   name: 'default'
   properties: {
@@ -120,7 +120,7 @@ resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2023-01-01
   }
 }
 
-resource fileShares 'Microsoft.Storage/storageAccounts/fileServices/shares@2023-01-01' = [for fileShareName in fileShareNames: {
+resource fileShares 'Microsoft.Storage/storageAccounts/fileServices/shares@2023-05-01' = [for fileShareName in fileShareNames: {
   parent: fileServices
   name: fileShareName
   properties: {

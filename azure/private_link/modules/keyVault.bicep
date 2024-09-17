@@ -3,7 +3,7 @@ param keyVaultName string
 
 param virtualNetworkSubnetId string
 
-resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' = {
+resource keyVault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: keyVaultName
   location: location
   properties: {

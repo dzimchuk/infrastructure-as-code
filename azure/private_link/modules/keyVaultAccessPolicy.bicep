@@ -3,7 +3,7 @@ param principalIds array
 
 var tenantId = subscription().tenantId
 
-resource keyVaultAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2022-07-01' = {
+resource keyVaultAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2023-07-01' = {
   name: '${keyVaultName}/add'
   properties: {
     accessPolicies: [for principalId in principalIds: {

@@ -10,15 +10,15 @@ param fileShareData object
 @secure()
 param accountKey string
 
-resource appEnvironment 'Microsoft.App/managedEnvironments@2023-08-01-preview' = {
+resource appEnvironment 'Microsoft.App/managedEnvironments@2024-03-01' = {
   name: '${solutionName}-${environment}'
   location: location
   properties: {
     appLogsConfiguration: {
       destination: 'log-analytics'
       logAnalyticsConfiguration: {
-        customerId: reference(logAnalyticsWorkspaceId, '2022-10-01').customerId
-        sharedKey: listKeys(logAnalyticsWorkspaceId, '2022-10-01').primarySharedKey
+        customerId: reference(logAnalyticsWorkspaceId, '2023-09-01').customerId
+        sharedKey: listKeys(logAnalyticsWorkspaceId, '2023-09-01').primarySharedKey
       }
     }
     workloadProfiles: [
@@ -35,7 +35,7 @@ resource appEnvironment 'Microsoft.App/managedEnvironments@2023-08-01-preview' =
   }
 }
 
-resource fileShare 'Microsoft.App/managedEnvironments/storages@2023-08-01-preview' = {
+resource fileShare 'Microsoft.App/managedEnvironments/storages@2024-03-01' = {
   parent: appEnvironment
   name: 'files'
   properties: {
